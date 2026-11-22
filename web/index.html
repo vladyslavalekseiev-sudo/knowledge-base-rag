@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Ask Relay Knowledge about internal SaaS policies and runbooks.">
+  <title>Relay Knowledge</title>
+  <link rel="stylesheet" href="/assets/style.css">
+  <script src="/assets/app.js" defer></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">R</span> Relay Knowledge</a>
+    <p class="sidebar-label">WORKSPACE</p>
+    <a class="current" href="/" aria-current="page"><span aria-hidden="true">⌕</span> Ask a question</a>
+    <section class="library" aria-labelledby="library-title">
+      <h2 id="library-title">Knowledge library</h2>
+      <ul id="library-list"></ul>
+    </section>
+    <p class="sidebar-note">Fictional SaaS workspace<br><a href="/docs">API reference ↗</a></p>
+  </aside>
+  <main>
+    <header class="top">
+      <span>Workspace <span aria-hidden="true">/</span> <strong>Ask</strong></span>
+      <span class="index-state" id="index-state"></span>
+    </header>
+    <div class="page">
+      <div class="intro">
+        <div class="intro-mark" aria-hidden="true">⌕</div>
+        <h1>Ask your knowledge base</h1>
+        <p>Find answers in RelayOps policies and runbooks, with excerpts you can verify.</p>
+      </div>
+      <form id="ask-form" class="ask">
+        <label for="question">Your question</label>
+        <textarea id="question" name="question" maxlength="360" rows="2" required
+          placeholder="How long do webhook delivery retries continue?"></textarea>
+        <div class="ask-actions">
+          <span>Use a specific question for better results.</span>
+          <button class="primary" type="submit" id="submit">Find answer <span aria-hidden="true">↗</span></button>
+        </div>
+      </form>
+      <section class="examples" aria-label="Example questions">
+        <span class="example-label">Try asking</span>
+        <button type="button">How long do webhook retries continue?</button>
+        <button type="button">Who can download invoices?</button>
+        <button type="button">Does RelayOps accept annual refunds?</button>
+      </section>
+      <p id="progress" class="progress" role="status"></p>
+      <div class="result" id="result" hidden>
+        <section class="panel" aria-labelledby="answer-title">
+          <div class="panel-header"><h2 id="answer-title">Answer</h2><span id="mode" class="mode"></span></div>
+          <div id="answer" class="answer"></div>
+        </section>
+        <section class="panel" id="source-panel" aria-labelledby="source-title">
+          <div class="panel-header"><h2 id="source-title">Sources</h2><span id="count" class="count"></span></div>
+          <ol id="sources" class="sources"></ol>
+        </section>
+      </div>
+    </div>
+  </main>
+  <dialog id="source-dialog" aria-labelledby="dialog-title">
+    <div class="dialog-header">
+      <div><p id="dialog-document"></p><h2 id="dialog-title">Source passage</h2></div>
+      <form method="dialog"><button class="close" type="submit" aria-label="Close source">×</button></form>
+    </div>
+    <p id="dialog-text" class="dialog-text"></p>
+  </dialog>
+</body>
+</html>

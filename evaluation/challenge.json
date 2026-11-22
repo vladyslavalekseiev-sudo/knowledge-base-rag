@@ -1,0 +1,10 @@
+[
+  {"id":"challenge-01","group":"paraphrase","question":"Can the owner stop a pending workspace deletion, and how long is the cancellation window?","sources":["data/delete-a-workspace/1"],"includes":["30 days","contacting support"]},
+  {"id":"challenge-02","group":"direct","question":"How long is the download link for a workspace export valid?","sources":["data/request-a-workspace-export/1"],"includes":["seven days"]},
+  {"id":"challenge-03","group":"direct","question":"Which HTTP responses acknowledge webhook deliveries?","sources":["webhooks/delivery-retries/1"],"includes":["HTTP 2xx"]},
+  {"id":"challenge-04","group":"paraphrase","question":"If all owners lose access, who verifies their identity?","sources":["access/lost-authenticator/1"],"includes":["contact support","manual identity verification"]},
+  {"id":"challenge-05","group":"unanswerable","question":"Where are US workspace backups stored?","sources":[],"includes":[]},
+  {"id":"challenge-06","group":"unanswerable","question":"How long do I have to dispute a failed card payment?","sources":[],"includes":[]},
+  {"id":"challenge-07","group":"unanswerable","question":"What is the SOC 2 audit history retention period?","sources":[],"includes":[]},
+  {"id":"challenge-08","group":"unanswerable","question":"How many invoices can I download in one request?","sources":[],"includes":[]}
+]
