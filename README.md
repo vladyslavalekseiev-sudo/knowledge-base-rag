@@ -1,5 +1,7 @@
 # Relay Knowledge
 
+[![CI](https://github.com/vladyslavalekseiev-sudo/knowledge-base-rag/actions/workflows/ci.yml/badge.svg)](https://github.com/vladyslavalekseiev-sudo/knowledge-base-rag/actions/workflows/ci.yml)
+
 Relay Knowledge answers support and operations questions about a fictional B2B SaaS. Every answer links to the exact indexed passage. When a question falls outside the documents, the app returns an explicit refusal.
 
 ![Relay Knowledge answers a webhook question and links to the runbook](docs/relay-knowledge.jpg)

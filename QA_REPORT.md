@@ -2,7 +2,7 @@
 
 **Date:** 2026-11-22, Europe/Berlin. **Scope:** application, tests, dependencies and deployment configuration. **Decision:** suitable for a local portfolio demonstration; **not ready for unrestricted production use**.
 
-The application works on the checked corpus, handles the tested failure modes, and has substantially stronger regression coverage. A real retrieval failure remains. Container execution, other operating systems, public hosting, and sustained production operation remain unverified. No P0 defect was confirmed. No claim of universal answer correctness or absence of all vulnerabilities is made.
+The application works on the checked corpus, handles the tested failure modes, and has substantially stronger regression coverage. Linux tests, container execution and a container API smoke test passed in GitHub Actions. A real retrieval failure remains; macOS, public application hosting and sustained production operation remain unverified. No P0 defect was confirmed. No claim of universal answer correctness or absence of all vulnerabilities is made.
 
 ## Scope and environment
 
@@ -28,6 +28,8 @@ No meaningful dead application code or duplicate business logic was identified b
 The retriever is English lexical matching with hand-written normalization and scope checks. It is **not embedding-based semantic retrieval**. Exact source quotation prevents invented quotation text, but neither quotation identity nor structural sentence-range validation proves that the selected content fully answers the question.
 
 ## Results and counts
+
+**Hosted CI verification:** [successful run on commit `c29e56b`](https://github.com/vladyslavalekseiev-sudo/knowledge-base-rag/actions/runs/45040507101). GitHub's Ubuntu runner passed dependency installation, Ruff, the Python test suite with coverage enforcement, dependency vulnerability audit, the offline evaluation, JavaScript syntax checking, Docker image build/start and an actual container API search verifying the expected answer and source. These checks extend the local Windows evidence below; they do not establish production hosting or macOS compatibility.
 
 | Suite | Executed | Passed | Failed | Evidence |
 |---|---:|---:|---:|---|
@@ -58,6 +60,7 @@ Before fixes, seven assertions in the expanded run failed for the body limit, br
 | QA-06 | P2 | Slow model calls had no application admission limit and could occupy the synchronous request worker pool. | At most two simultaneous calls per Ollama instance/application process; overloaded requests immediately fall back to indexed excerpts. A real local blocking HTTP service verifies admission, prompt fallback and slot reuse. A final real Qwen run also passes. |
 | QA-07 | P3 | Homepage lacked defense-in-depth browser headers. No successful XSS exploit was demonstrated. | Added restrictive homepage CSP, `nosniff`, `DENY` framing and no-referrer policy. Browser app still works; source/answer strings use text rendering. API reference is intentionally outside the homepage CSP because its default UI uses external CDN resources. |
 | QA-08 | P2 | Deep JSON, escaped unpaired Unicode surrogates and `NaN` each caused real HTTP 500 responses. Decoder recursion and error-response serialization were not safe for these values. A deeply nested model response could also escape fallback. | Validate bounded JSON text, finite values, valid Unicode and depth before FastAPI handling; return compact HTTP 400. Reject unsupported content types with HTTP 415 before bytes can enter schema error serialization. Catch recursive model decoding failures and fall back. Seven hostile-input regressions plus a deep-response fault test pass; the live 134-case HTTP probe has no unexpected status or 500. |
+| QA-09 | P2 | The first hosted container check contacted the mapped port before the app was ready. Docker's connection reset was not covered by curl's connection-refused retry option, so CI failed despite a successful image build. | Bounded readiness retries now also handle connection resets, followed by an actual API question and source assertion. The repeat hosted run passed; the container is cleaned up after the job. [Original failure](https://github.com/vladyslavalekseiev-sudo/knowledge-base-rag/actions/runs/45040348326), [successful verification](https://github.com/vladyslavalekseiev-sudo/knowledge-base-rag/actions/runs/45040507101). |
 
 P0 = critical, P1 = high, P2 = medium, P3 = low. No substantial architecture change, new hosted dependency, authentication system or retrieval-engine replacement was introduced.
 
@@ -111,7 +114,7 @@ References used to check security expectations and advisories: [OWASP REST Secur
 | P2 | Challenge-01 still falsely refuses `Can the owner stop a pending workspace deletion, and how long is the cancellation window?` | The second clause needs reference resolution and different wording. It is not hidden or removed from the dataset. Plan a separately reviewed retrieval improvement and expand genuinely held-out questions. |
 | P2 | Semantic completeness of a selected quotation is not guaranteed | Structural/source/scope checks cannot prove the quotation answers every intent or includes every restriction. Larger independent evaluations and adversarial model selection tests are needed before operational reliance. |
 | P1 for private/internet use | No authentication, document ACLs, HTTPS termination or distributed rate limiting | Sensitive documents and unrestricted expensive model traffic require an access-control model and operational limits before deployment. |
-| P2 release verification | Docker is absent; no WSL distribution/container daemon is available. Linux/macOS and GitHub-hosted CI were not executed. | Dockerfile/workflow were inspected and workflow syntax checked, but a real image build/start and OS compatibility remain release gates. No public deployment was attempted. |
+| P2 release verification | macOS and public application hosting remain unverified. | Windows local tests and Linux/container CI passed. A public source repository does not establish a running production deployment. |
 | P2 operational verification | Three-minute soak; no 24-hour run, disk-full test, host reboot, multiworker replacement stress or production-like network proxy | Do not infer long-term availability, total timeout behaviour or leak freedom from this bounded run. |
 | P3 | ID lookup scans an FTS unindexed column; broad FTS queries sort growing candidate sets | For larger corpora, profile a primary-key passage lookup alongside FTS and evaluate ranking scalability. |
 | P3 | Transitive dependencies and base image are not fully locked to hashes/digests | The captured dependency snapshot is reproducible evidence of this run; future fresh resolutions/images may differ. Add lock/hash generation and image scanning for a release workflow. |
@@ -133,8 +136,8 @@ python -m evaluation.stress --soak-seconds 180 --output .data/qa/performance.jso
 python -m evaluation.run --model qwen2.5:0.5b
 ```
 
-The challenge command intentionally exits nonzero for the unresolved failure. `actionlint .github/workflows/ci.yml` checks workflow syntax if actionlint is installed. CI now runs the expanded Python checks, coverage threshold, dependency audit and existing container startup check; the updated hosted workflow itself has not been run in this environment.
+The challenge command intentionally exits nonzero for the unresolved failure. `actionlint .github/workflows/ci.yml` checks workflow syntax if actionlint is installed. CI runs the expanded Python checks, coverage threshold, dependency audit, container startup and API smoke check. The hosted workflow passed on the linked revision above.
 
 **GO:** present the source and locally demonstrate the fictional knowledge base, source-linked answers, refusal behaviour and actual QA evidence in a GitHub portfolio.
 
-**NO-GO:** production use with private/company documents until the release gates above are closed. Container execution and multiplatform deployment still require verification.
+**NO-GO:** production use with private/company documents until the access-control and operational release gates above are closed. macOS compatibility and public application deployment still require verification.
