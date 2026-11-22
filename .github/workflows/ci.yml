@@ -9,6 +9,7 @@ permissions:
 jobs:
   verify:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-python@v6
@@ -31,6 +32,24 @@ jobs:
         run: |
           docker build -t relay-knowledge .
           docker run -d --name relay-knowledge -p 127.0.0.1:8000:8000 relay-knowledge
-          curl --fail --retry 10 --retry-connrefused http://127.0.0.1:8000/api/health
+          curl --fail --retry 15 --retry-all-errors --retry-delay 1 --retry-max-time 45 --max-time 5 http://127.0.0.1:8000/api/health
+          python - <<'PY'
+          import json
+          from urllib.request import Request, urlopen
+
+          request = Request(
+              'http://127.0.0.1:8000/api/ask',
+              data=json.dumps({'question': 'How long do webhook retries continue?'}).encode(),
+              headers={'Content-Type': 'application/json'},
+          )
+          with urlopen(request, timeout=5) as response:
+              answer = json.load(response)
+          assert answer['status'] == 'answered', answer
+          assert '24 hours' in answer['answer'], answer
+          assert answer['citations'][0]['id'] == 'webhooks/delivery-retries/1', answer
+          print('Container API smoke test passed.')
+          PY
       - if: failure() && steps.container.outcome == 'failure'
         run: docker logs relay-knowledge
+      - if: always()
+        run: docker rm -f relay-knowledge || true
