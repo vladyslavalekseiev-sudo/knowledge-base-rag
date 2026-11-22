@@ -1,4 +1,6 @@
+import logging
 import os
+import sqlite3
 from collections import Counter
 from contextlib import asynccontextmanager
 from pathlib import Path
@@ -6,15 +8,17 @@ from typing import Annotated, Literal
 from urllib.parse import quote
 
 from fastapi import FastAPI, HTTPException, Request
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, ConfigDict, StringConstraints
 
 from .answer import INSUFFICIENT, Assistant, Ollama
 from .documents import Passage, load_passages
+from .middleware import HTTPProtections
 from .search import Index, build_index
 
 ROOT = Path(__file__).resolve().parents[1]
+log = logging.getLogger(__name__)
 
 
 class Ask(BaseModel):
@@ -72,7 +76,13 @@ def create_app(knowledge: Path | None = None, database: Path | None = None) -> F
         yield
 
     app = FastAPI(title="Relay Knowledge API", lifespan=lifespan)
+    app.add_middleware(HTTPProtections)
     app.mount("/assets", StaticFiles(directory=ROOT / "web"), name="assets")
+
+    @app.exception_handler(sqlite3.Error)
+    async def index_unavailable(request: Request, exc: sqlite3.Error):
+        log.error("Knowledge index unavailable: %s", type(exc).__name__)
+        return JSONResponse({"detail": "Knowledge index unavailable. Restart the service to rebuild it."}, status_code=503)
 
     @app.get("/", include_in_schema=False)
     def home():
@@ -80,6 +90,7 @@ def create_app(knowledge: Path | None = None, database: Path | None = None) -> F
 
     @app.get("/api/health")
     def health(request: Request):
+        request.app.state.assistant.index.check_ready()
         return {"status": "ready", **request.app.state.stats}
 
     @app.get("/api/documents")

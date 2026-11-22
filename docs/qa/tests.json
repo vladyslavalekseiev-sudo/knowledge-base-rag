@@ -1,0 +1,466 @@
+{
+  "total": 92,
+  "passed": 92,
+  "tests": [
+    {
+      "name": "tests.test_api.test_ask_cites_a_passage_that_can_be_opened_independently",
+      "seconds": 0.267,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_api.test_requires_evidence_for_each_part_and_scope",
+      "seconds": 0.122,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_api.test_empty_or_oversized_questions_and_unknown_sources_are_rejected",
+      "seconds": 0.079,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_api.test_chunking_preserves_words_and_bounds_unpunctuated_sections",
+      "seconds": 0.003,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_api.test_ollama_http_contract_and_grounding",
+      "seconds": 0.692,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_invalid_input[body0]",
+      "seconds": 0.064,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_invalid_input[body1]",
+      "seconds": 0.073,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_invalid_input[body2]",
+      "seconds": 0.065,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_invalid_input[body3]",
+      "seconds": 0.064,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_invalid_input[body4]",
+      "seconds": 0.059,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_invalid_input[body5]",
+      "seconds": 0.075,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_invalid_input[body6]",
+      "seconds": 0.069,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_invalid_input[body7]",
+      "seconds": 0.066,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_invalid_input[body8]",
+      "seconds": 0.073,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_safe_input_boundaries[abc]",
+      "seconds": 0.077,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_safe_input_boundaries[xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx]",
+      "seconds": 0.077,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_safe_input_boundaries[  How long do webhook retries continue?  ]",
+      "seconds": 0.079,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_safe_input_boundaries[\\u4f60\\u597d\\u4e16\\u754c]",
+      "seconds": 0.097,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_safe_input_boundaries[\\x00\\x00\\x00]",
+      "seconds": 0.084,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_safe_input_boundaries[\" OR *; DROP TABLE passages; --]",
+      "seconds": 0.078,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_safe_input_boundaries[<script>alert(1)</script>]",
+      "seconds": 0.086,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_http_negative_paths",
+      "seconds": 0.214,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_request_body_is_bounded_before_json_validation",
+      "seconds": 0.069,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_streamed_request_cannot_bypass_size_limit",
+      "seconds": 0.073,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_browser_security_headers",
+      "seconds": 0.078,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_database_failure_is_reported_as_unavailable[missing]",
+      "seconds": 0.086,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_database_failure_is_reported_as_unavailable[corrupt]",
+      "seconds": 0.094,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_database_failure_is_reported_as_unavailable[schema]",
+      "seconds": 0.099,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_invalid_documents_are_rejected[]",
+      "seconds": 0.01,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_invalid_documents_are_rejected[no title]",
+      "seconds": 0.011,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_invalid_documents_are_rejected[# Title\\ncontent outside section]",
+      "seconds": 0.011,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_invalid_documents_are_rejected[# Title\\n## Empty]",
+      "seconds": 0.012,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_invalid_documents_are_rejected[# Title\\n## !!!\\nText]",
+      "seconds": 0.011,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_invalid_documents_are_rejected[# Title\\n## A\\nText\\n## A!\\nText]",
+      "seconds": 0.012,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_invalid_documents_are_rejected[# Title]",
+      "seconds": 0.012,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_duplicate_document_ids_and_non_english_identifiers",
+      "seconds": 0.013,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_missing_and_empty_corpus",
+      "seconds": 0.008,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_chunks_preserve_words[0]",
+      "seconds": 0.003,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_chunks_preserve_words[1]",
+      "seconds": 0.003,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_chunks_preserve_words[169]",
+      "seconds": 0.004,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_chunks_preserve_words[170]",
+      "seconds": 0.003,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_chunks_preserve_words[171]",
+      "seconds": 0.003,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_chunks_preserve_words[340]",
+      "seconds": 0.003,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_chunks_preserve_words[341]",
+      "seconds": 0.003,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_chunks_preserve_words[5000]",
+      "seconds": 0.011,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_persistence_atomic_failure_and_rebuild",
+      "seconds": 0.096,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_restart_recovers_corrupt_derived_database",
+      "seconds": 0.133,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_concurrent_readers_are_deterministic",
+      "seconds": 0.192,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_retrieval_refuses_unsupported_input[]",
+      "seconds": 0.044,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_retrieval_refuses_unsupported_input[?;?]",
+      "seconds": 0.058,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_retrieval_refuses_unsupported_input[Who can download invoices? How long do webhook retries continue? Where are EU backups stored? Who can reset MFA?]",
+      "seconds": 0.042,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_retrieval_refuses_unsupported_input[annual refunds]",
+      "seconds": 0.049,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_retrieval_refuses_unsupported_input[How long is audit history retained on Starter?]",
+      "seconds": 0.046,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_retrieval_refuses_unsupported_input[Where are US workspace backups stored?]",
+      "seconds": 0.046,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_scope_and_normalization",
+      "seconds": 0.002,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_invalid_model_configuration_fails_early[localhost:11434]",
+      "seconds": 0.003,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_invalid_model_configuration_fails_early[file:///tmp/model]",
+      "seconds": 0.004,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_invalid_model_configuration_fails_early[https://]",
+      "seconds": 0.004,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_invalid_model_configuration_fails_early[http://user:secret@host]",
+      "seconds": 0.005,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_invalid_model_configuration_fails_early[http://host?key=secret]",
+      "seconds": 0.006,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_invalid_model_configuration_fails_early[http://host#section]",
+      "seconds": 0.005,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_empty_index_is_not_ready",
+      "seconds": 0.03,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_fragmented_body_and_disconnect",
+      "seconds": 0.007,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_hostile_json_does_not_crash_or_echo_input[decoder-depth]",
+      "seconds": 0.085,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_hostile_json_does_not_crash_or_echo_input[nesting-limit]",
+      "seconds": 0.076,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_hostile_json_does_not_crash_or_echo_input[surrogates]",
+      "seconds": 0.072,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_hostile_json_does_not_crash_or_echo_input[nan]",
+      "seconds": 0.073,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_hostile_json_does_not_crash_or_echo_input[infinity]",
+      "seconds": 0.076,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_hostile_json_does_not_crash_or_echo_input[overflow]",
+      "seconds": 0.074,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_hostile_json_does_not_crash_or_echo_input[utf8]",
+      "seconds": 0.073,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_model_schema_rejects_malformed_ranges[None]",
+      "seconds": 0.002,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_model_schema_rejects_malformed_ranges[raw1]",
+      "seconds": 0.002,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_model_schema_rejects_malformed_ranges[True]",
+      "seconds": 0.002,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_model_schema_rejects_malformed_ranges[raw3]",
+      "seconds": 0.002,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_model_schema_rejects_malformed_ranges[raw4]",
+      "seconds": 0.002,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_model_schema_rejects_malformed_ranges[raw5]",
+      "seconds": 0.002,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_model_schema_rejects_malformed_ranges[raw6]",
+      "seconds": 0.002,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_model_schema_rejects_malformed_ranges[raw7]",
+      "seconds": 0.002,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_model_schema_rejects_malformed_ranges[raw8]",
+      "seconds": 0.002,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_model_schema_rejects_malformed_ranges[raw9]",
+      "seconds": 0.003,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_model_schema_preserves_refusal_and_source_order",
+      "seconds": 0.003,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_real_http_model_failure_contract[invalid-json]",
+      "seconds": 0.566,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_real_http_model_failure_contract[wrong-type]",
+      "seconds": 0.224,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_real_http_model_failure_contract[http-500]",
+      "seconds": 0.581,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_real_http_model_failure_contract[truncated]",
+      "seconds": 0.551,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_real_http_model_failure_contract[oversized]",
+      "seconds": 0.586,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_real_http_model_failure_contract[invalid-content]",
+      "seconds": 0.553,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_real_http_model_failure_contract[missing-excerpts]",
+      "seconds": 0.547,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_real_http_model_failure_contract[refusal]",
+      "seconds": 0.546,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_real_http_model_failure_contract[decoder-depth]",
+      "seconds": 0.558,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_real_model_connection_refused_falls_back",
+      "seconds": 2.088,
+      "result": "passed"
+    },
+    {
+      "name": "tests.test_resilience.test_model_overload_uses_immediate_fallback",
+      "seconds": 0.519,
+      "result": "passed"
+    }
+  ]
+}

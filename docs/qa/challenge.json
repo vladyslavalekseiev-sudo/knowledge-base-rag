@@ -1,0 +1,123 @@
+{
+  "configured_model": null,
+  "cases": 8,
+  "passed": 7,
+  "correct_refusals": 4,
+  "refusal_cases": 4,
+  "source_precision": 1.0,
+  "source_recall": 0.75,
+  "p50_ms": 1.32,
+  "groups": {
+    "paraphrase": {
+      "total": 2,
+      "passed": 1
+    },
+    "direct": {
+      "total": 2,
+      "passed": 2
+    },
+    "unanswerable": {
+      "total": 4,
+      "passed": 4
+    }
+  },
+  "results": [
+    {
+      "id": "challenge-01",
+      "group": "paraphrase",
+      "question": "Can the owner stop a pending workspace deletion, and how long is the cancellation window?",
+      "expected": [
+        "data/delete-a-workspace/1"
+      ],
+      "actual": [],
+      "passed": false,
+      "missing_answer_text": [
+        "30 days",
+        "contacting support"
+      ],
+      "mode": null
+    },
+    {
+      "id": "challenge-02",
+      "group": "direct",
+      "question": "How long is the download link for a workspace export valid?",
+      "expected": [
+        "data/request-a-workspace-export/1"
+      ],
+      "actual": [
+        "data/request-a-workspace-export/1"
+      ],
+      "passed": true,
+      "missing_answer_text": [],
+      "mode": "extractive"
+    },
+    {
+      "id": "challenge-03",
+      "group": "direct",
+      "question": "Which HTTP responses acknowledge webhook deliveries?",
+      "expected": [
+        "webhooks/delivery-retries/1"
+      ],
+      "actual": [
+        "webhooks/delivery-retries/1"
+      ],
+      "passed": true,
+      "missing_answer_text": [],
+      "mode": "extractive"
+    },
+    {
+      "id": "challenge-04",
+      "group": "paraphrase",
+      "question": "If all owners lose access, who verifies their identity?",
+      "expected": [
+        "access/lost-authenticator/1"
+      ],
+      "actual": [
+        "access/lost-authenticator/1"
+      ],
+      "passed": true,
+      "missing_answer_text": [],
+      "mode": "extractive"
+    },
+    {
+      "id": "challenge-05",
+      "group": "unanswerable",
+      "question": "Where are US workspace backups stored?",
+      "expected": [],
+      "actual": [],
+      "passed": true,
+      "missing_answer_text": [],
+      "mode": null
+    },
+    {
+      "id": "challenge-06",
+      "group": "unanswerable",
+      "question": "How long do I have to dispute a failed card payment?",
+      "expected": [],
+      "actual": [],
+      "passed": true,
+      "missing_answer_text": [],
+      "mode": null
+    },
+    {
+      "id": "challenge-07",
+      "group": "unanswerable",
+      "question": "What is the SOC 2 audit history retention period?",
+      "expected": [],
+      "actual": [],
+      "passed": true,
+      "missing_answer_text": [],
+      "mode": null
+    },
+    {
+      "id": "challenge-08",
+      "group": "unanswerable",
+      "question": "How many invoices can I download in one request?",
+      "expected": [],
+      "actual": [],
+      "passed": true,
+      "missing_answer_text": [],
+      "mode": null
+    }
+  ]
+}

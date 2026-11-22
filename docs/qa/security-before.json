@@ -1,0 +1,22 @@
+{
+  "findings": [
+    {
+      "package": "pip",
+      "version": "26.0.1",
+      "advisories": [
+        "PYSEC-2026-196",
+        "PYSEC-2026-2875",
+        "PYSEC-2026-2876",
+        "PYSEC-2026-3721"
+      ]
+    },
+    {
+      "package": "pytest",
+      "version": "8.4.2",
+      "advisories": [
+        "PYSEC-2026-1845"
+      ]
+    }
+  ],
+  "note": "Duplicate advisory records deduplicated by ID. Fixed in the isolated QA environment and installation/CI instructions."
+}

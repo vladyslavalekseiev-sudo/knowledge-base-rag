@@ -1,0 +1,447 @@
+{
+  "platform": "Windows-10-10.0.19045-SP0",
+  "python": "3.13.13",
+  "load": [
+    {
+      "concurrency": 1,
+      "requests": 100,
+      "errors": 0,
+      "elapsed_seconds": 0.77,
+      "requests_per_second": 130.53,
+      "cpu_seconds": 0.55,
+      "p50_ms": 6.11,
+      "p95_ms": 23.51,
+      "p99_ms": 32.69
+    },
+    {
+      "concurrency": 8,
+      "requests": 400,
+      "errors": 0,
+      "elapsed_seconds": 1.35,
+      "requests_per_second": 296.97,
+      "cpu_seconds": 2.47,
+      "p50_ms": 25.35,
+      "p95_ms": 41.52,
+      "p99_ms": 46.99
+    },
+    {
+      "concurrency": 32,
+      "requests": 1000,
+      "errors": 0,
+      "elapsed_seconds": 3.42,
+      "requests_per_second": 292.54,
+      "cpu_seconds": 6.09,
+      "p50_ms": 105.89,
+      "p95_ms": 133.87,
+      "p99_ms": 158.2
+    }
+  ],
+  "startup_ms": 2213.55,
+  "monitored_worker": {
+    "pid": 48964,
+    "command": [
+      "-m",
+      "uvicorn",
+      "rag.app:app",
+      "--host",
+      "127.0.0.1",
+      "--port",
+      "57776",
+      "--no-access-log"
+    ]
+  },
+  "soak": {
+    "seconds": 180.07,
+    "requests": 11168,
+    "errors": 0,
+    "cpu_seconds": 65.34,
+    "rss_start_mb": 60.71,
+    "rss_end_mb": 57.75,
+    "rss_peak_mb": 67.67,
+    "handles_start": 176,
+    "handles_end": 176,
+    "samples": [
+      {
+        "second": 0.03,
+        "rss_mb": 60.71,
+        "handles": 176
+      },
+      {
+        "second": 2.74,
+        "rss_mb": 60.45,
+        "handles": 176
+      },
+      {
+        "second": 5.3,
+        "rss_mb": 64.55,
+        "handles": 176
+      },
+      {
+        "second": 7.94,
+        "rss_mb": 58.86,
+        "handles": 177
+      },
+      {
+        "second": 10.45,
+        "rss_mb": 61.18,
+        "handles": 176
+      },
+      {
+        "second": 13.17,
+        "rss_mb": 63.23,
+        "handles": 176
+      },
+      {
+        "second": 15.71,
+        "rss_mb": 59.08,
+        "handles": 176
+      },
+      {
+        "second": 18.26,
+        "rss_mb": 61.34,
+        "handles": 176
+      },
+      {
+        "second": 20.82,
+        "rss_mb": 63.01,
+        "handles": 176
+      },
+      {
+        "second": 23.38,
+        "rss_mb": 59.4,
+        "handles": 176
+      },
+      {
+        "second": 25.96,
+        "rss_mb": 61.2,
+        "handles": 176
+      },
+      {
+        "second": 28.52,
+        "rss_mb": 62.74,
+        "handles": 179
+      },
+      {
+        "second": 31.12,
+        "rss_mb": 59.31,
+        "handles": 176
+      },
+      {
+        "second": 33.7,
+        "rss_mb": 62.36,
+        "handles": 176
+      },
+      {
+        "second": 36.4,
+        "rss_mb": 61.75,
+        "handles": 176
+      },
+      {
+        "second": 39.05,
+        "rss_mb": 55.76,
+        "handles": 176
+      },
+      {
+        "second": 41.64,
+        "rss_mb": 57.2,
+        "handles": 176
+      },
+      {
+        "second": 44.27,
+        "rss_mb": 59.37,
+        "handles": 177
+      },
+      {
+        "second": 47.01,
+        "rss_mb": 55.19,
+        "handles": 178
+      },
+      {
+        "second": 49.58,
+        "rss_mb": 59.05,
+        "handles": 177
+      },
+      {
+        "second": 52.16,
+        "rss_mb": 60.81,
+        "handles": 177
+      },
+      {
+        "second": 54.89,
+        "rss_mb": 57.45,
+        "handles": 177
+      },
+      {
+        "second": 57.48,
+        "rss_mb": 59.21,
+        "handles": 176
+      },
+      {
+        "second": 60.1,
+        "rss_mb": 61.75,
+        "handles": 176
+      },
+      {
+        "second": 62.68,
+        "rss_mb": 57.44,
+        "handles": 176
+      },
+      {
+        "second": 65.25,
+        "rss_mb": 59.96,
+        "handles": 176
+      },
+      {
+        "second": 67.83,
+        "rss_mb": 61.54,
+        "handles": 176
+      },
+      {
+        "second": 70.41,
+        "rss_mb": 57.93,
+        "handles": 177
+      },
+      {
+        "second": 72.91,
+        "rss_mb": 59.9,
+        "handles": 176
+      },
+      {
+        "second": 75.51,
+        "rss_mb": 62.03,
+        "handles": 176
+      },
+      {
+        "second": 78.07,
+        "rss_mb": 58.95,
+        "handles": 180
+      },
+      {
+        "second": 80.65,
+        "rss_mb": 60.73,
+        "handles": 176
+      },
+      {
+        "second": 83.21,
+        "rss_mb": 62.68,
+        "handles": 177
+      },
+      {
+        "second": 85.87,
+        "rss_mb": 57.91,
+        "handles": 176
+      },
+      {
+        "second": 88.45,
+        "rss_mb": 58.29,
+        "handles": 176
+      },
+      {
+        "second": 91.03,
+        "rss_mb": 63.29,
+        "handles": 177
+      },
+      {
+        "second": 93.78,
+        "rss_mb": 65.09,
+        "handles": 176
+      },
+      {
+        "second": 96.61,
+        "rss_mb": 61.46,
+        "handles": 177
+      },
+      {
+        "second": 99.22,
+        "rss_mb": 63.2,
+        "handles": 177
+      },
+      {
+        "second": 101.75,
+        "rss_mb": 65.2,
+        "handles": 177
+      },
+      {
+        "second": 104.37,
+        "rss_mb": 61.74,
+        "handles": 176
+      },
+      {
+        "second": 107.06,
+        "rss_mb": 63.86,
+        "handles": 176
+      },
+      {
+        "second": 109.76,
+        "rss_mb": 65.09,
+        "handles": 176
+      },
+      {
+        "second": 112.24,
+        "rss_mb": 62.09,
+        "handles": 179
+      },
+      {
+        "second": 114.77,
+        "rss_mb": 64.25,
+        "handles": 179
+      },
+      {
+        "second": 117.31,
+        "rss_mb": 66.34,
+        "handles": 176
+      },
+      {
+        "second": 119.94,
+        "rss_mb": 63.53,
+        "handles": 177
+      },
+      {
+        "second": 122.53,
+        "rss_mb": 65.55,
+        "handles": 177
+      },
+      {
+        "second": 125.07,
+        "rss_mb": 67.05,
+        "handles": 176
+      },
+      {
+        "second": 127.55,
+        "rss_mb": 64.01,
+        "handles": 176
+      },
+      {
+        "second": 130.01,
+        "rss_mb": 65.29,
+        "handles": 177
+      },
+      {
+        "second": 132.48,
+        "rss_mb": 67.5,
+        "handles": 176
+      },
+      {
+        "second": 134.99,
+        "rss_mb": 55.92,
+        "handles": 176
+      },
+      {
+        "second": 137.47,
+        "rss_mb": 58.98,
+        "handles": 176
+      },
+      {
+        "second": 139.94,
+        "rss_mb": 60.81,
+        "handles": 176
+      },
+      {
+        "second": 142.54,
+        "rss_mb": 57.48,
+        "handles": 176
+      },
+      {
+        "second": 145.1,
+        "rss_mb": 59.45,
+        "handles": 177
+      },
+      {
+        "second": 147.66,
+        "rss_mb": 60.09,
+        "handles": 176
+      },
+      {
+        "second": 150.23,
+        "rss_mb": 58.14,
+        "handles": 177
+      },
+      {
+        "second": 152.83,
+        "rss_mb": 57.09,
+        "handles": 176
+      },
+      {
+        "second": 155.4,
+        "rss_mb": 61.97,
+        "handles": 176
+      },
+      {
+        "second": 157.95,
+        "rss_mb": 58.19,
+        "handles": 176
+      },
+      {
+        "second": 160.75,
+        "rss_mb": 60.29,
+        "handles": 176
+      },
+      {
+        "second": 163.26,
+        "rss_mb": 62.04,
+        "handles": 176
+      },
+      {
+        "second": 165.75,
+        "rss_mb": 58.59,
+        "handles": 179
+      },
+      {
+        "second": 168.22,
+        "rss_mb": 60.65,
+        "handles": 176
+      },
+      {
+        "second": 170.69,
+        "rss_mb": 62.61,
+        "handles": 176
+      },
+      {
+        "second": 173.17,
+        "rss_mb": 59.07,
+        "handles": 177
+      },
+      {
+        "second": 175.64,
+        "rss_mb": 61.01,
+        "handles": 176
+      },
+      {
+        "second": 178.11,
+        "rss_mb": 63.36,
+        "handles": 176
+      },
+      {
+        "second": 179.97,
+        "rss_mb": 57.75,
+        "handles": 176
+      }
+    ],
+    "p50_ms": 22.5,
+    "p95_ms": 31.65,
+    "p99_ms": 40.83,
+    "sample_note": "Every twentieth raw sample plus final sample; full local trace remains in .data/qa/performance-final.json."
+  },
+  "source_lookup": "webhooks/delivery-retries/1",
+  "recovery": {
+    "startup_ms": 2125.04,
+    "answered": true,
+    "previous_worker_stopped": true
+  },
+  "synthetic_scaling": [
+    {
+      "passages": 1000,
+      "build_ms": 71.45,
+      "find_p50_ms": 7.65,
+      "source_last_ms": 2.6,
+      "db_bytes": 327680
+    },
+    {
+      "passages": 10000,
+      "build_ms": 287.92,
+      "find_p50_ms": 36.94,
+      "source_last_ms": 10.29,
+      "db_bytes": 2949120
+    }
+  ]
+}

@@ -18,8 +18,12 @@ jobs:
           cache-dependency-path: |
             requirements.txt
             requirements-dev.txt
-      - run: python -m pip install -r requirements-dev.txt
-      - run: python -m pytest -W error -q
+            requirements-qa.txt
+      - run: python -m pip install --upgrade pip==26.3
+      - run: python -m pip install -r requirements-qa.txt
+      - run: python -m ruff check rag tests evaluation
+      - run: python -m pytest -W error -q --cov=rag --cov-branch --cov-fail-under=90
+      - run: python -m pip_audit
       - run: python -m evaluation.run
       - run: node --check web/app.js
       - name: Check container startup

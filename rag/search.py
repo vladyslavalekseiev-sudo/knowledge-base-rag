@@ -92,6 +92,11 @@ class Index:
     def _connect(self) -> sqlite3.Connection:
         return sqlite3.connect(self.path.resolve().as_uri() + "?mode=ro", uri=True)
 
+    def check_ready(self) -> None:
+        with closing(self._connect()) as db:
+            if db.execute("SELECT id FROM passages LIMIT 1").fetchone() is None:
+                raise sqlite3.DatabaseError("The knowledge index is empty.")
+
     def source(self, passage_id: str) -> Passage | None:
         with closing(self._connect()) as db:
             row = db.execute(

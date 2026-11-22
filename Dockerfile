@@ -2,7 +2,8 @@ FROM python:3.13-slim
 ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 KB_DATABASE=/data/knowledge.sqlite3
 WORKDIR /app
 COPY requirements.txt ./
-RUN pip install --no-cache-dir --disable-pip-version-check -r requirements.txt \
+RUN python -m pip install --no-cache-dir --disable-pip-version-check --upgrade pip==26.3 \
+    && pip install --no-cache-dir --disable-pip-version-check -r requirements.txt \
     && mkdir /data && chown 10001:10001 /data
 COPY rag rag
 COPY knowledge knowledge

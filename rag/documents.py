@@ -62,6 +62,8 @@ def load_passages(directory: Path) -> list[Passage]:
                 current.append(line)
             elif line.strip():
                 raise ValueError(f"Place content in a section in {file.name}.")
+        if not sections:
+            raise ValueError(f"{file.name} must contain at least one section.")
         for section_id, (section, paragraphs) in sections.items():
             chunks = chunk_section(" ".join(" ".join(paragraphs).split()))
             if not chunks:

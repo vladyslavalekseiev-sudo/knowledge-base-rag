@@ -2,7 +2,9 @@ import json
 import logging
 import re
 from dataclasses import dataclass
+from threading import BoundedSemaphore
 from typing import Literal
+from urllib.parse import urlsplit
 from urllib.request import Request, urlopen
 
 from .documents import SENTENCES, Passage
@@ -29,10 +31,25 @@ class Ollama:
     """Ask a local model to select evidence. The application writes the response."""
 
     def __init__(self, model: str, origin: str):
+        endpoint = urlsplit(origin)
+        if (
+            endpoint.scheme not in {"http", "https"} or not endpoint.hostname
+            or endpoint.username or endpoint.password or endpoint.query or endpoint.fragment
+        ):
+            raise ValueError("KB_OLLAMA_URL must be an HTTP(S) endpoint without credentials, query or fragment.")
         self.model = model
         self.origin = origin.rstrip("/")
+        self._slots = BoundedSemaphore(2)
 
     def narrow(self, question: str, passages: list[Passage], required: dict[str, set[str]]) -> list[Citation] | None:
+        if not self._slots.acquire(blocking=False):
+            return None
+        try:
+            return self._narrow(question, passages, required)
+        finally:
+            self._slots.release()
+
+    def _narrow(self, question: str, passages: list[Passage], required: dict[str, set[str]]) -> list[Citation] | None:
         sentences = [SENTENCES.split(passage.text) for passage in passages]
         prompt = {
             "question": question,
@@ -77,7 +94,7 @@ class Ollama:
                 payload = json.loads(response.read(64 * 1024))
             excerpts = json.loads(payload["message"]["content"])["excerpts"]
             return validate_excerpts(excerpts, passages, sentences, question, required)
-        except (OSError, ValueError, TypeError, KeyError):
+        except (OSError, ValueError, TypeError, KeyError, RecursionError):
             log.warning("Ollama could not return valid evidence. Using indexed excerpts.")
             return None
 
